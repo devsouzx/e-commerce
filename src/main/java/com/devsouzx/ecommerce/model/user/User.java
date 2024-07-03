@@ -1,5 +1,7 @@
 package com.devsouzx.ecommerce.model.user;
 
+import com.devsouzx.ecommerce.model.address.Address;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -18,4 +20,9 @@ public class User {
     private String name;
     private String email;
     private String password;
+
+    @ManyToOne
+    @JoinColumn(name = "address_id")
+    @JsonIgnore
+    private Address address;
 }
