@@ -5,6 +5,7 @@ CREATE TABLE users (
     name VARCHAR(100) NOT NULL,
     email VARCHAR(100) NOT NULL,
     password VARCHAR(100) NOT NULL,
+    phone VARCHAR(100),
     address_id UUID,
     FOREIGN KEY (address_id) REFERENCES address (id)
 );

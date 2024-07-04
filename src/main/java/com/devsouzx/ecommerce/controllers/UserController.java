@@ -31,6 +31,7 @@ public class UserController {
         } else {
             user.setName(body.name());
             user.setEmail(body.email());
+            user.setPhone(body.phone());
             user.setPassword(body.password());
             userRepository.save(user);
         }
