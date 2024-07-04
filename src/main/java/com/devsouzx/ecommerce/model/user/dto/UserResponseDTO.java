@@ -1,4 +1,4 @@
-package com.devsouzx.ecommerce.dto;
+package com.devsouzx.ecommerce.model.user.dto;
 
 import java.util.UUID;
 

@@ -1,7 +1,6 @@
 package com.devsouzx.ecommerce.controllers;
 
-import com.devsouzx.ecommerce.dto.UserRequestDTO;
-import com.devsouzx.ecommerce.dto.UserResponseDTO;
+import com.devsouzx.ecommerce.model.user.dto.UserRequestDTO;
 import com.devsouzx.ecommerce.model.user.User;
 import com.devsouzx.ecommerce.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
