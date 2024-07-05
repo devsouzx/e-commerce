@@ -1,10 +1,12 @@
 package com.devsouzx.ecommerce.model.user;
 
-import com.devsouzx.ecommerce.model.address.Address;
+import com.devsouzx.ecommerce.model.address.UserAddress;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
 
 @Table(name = "users")
@@ -22,8 +24,7 @@ public class User {
     private String phone;
     private String password;
 
-    @ManyToOne
-    @JoinColumn(name = "address_id")
+    @OneToMany(mappedBy = "id.user", cascade = CascadeType.ALL)
     @JsonIgnore
-    private Address address;
+    private Set<UserAddress> addresses = new HashSet<>();
 }
