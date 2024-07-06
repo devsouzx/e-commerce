@@ -6,10 +6,9 @@ import com.devsouzx.ecommerce.model.address.dto.AddressRequestDTO;
 import com.devsouzx.ecommerce.model.address.dto.AddressResponseDTO;
 import com.devsouzx.ecommerce.model.pk.UserAddressPK;
 import com.devsouzx.ecommerce.model.user.User;
-import com.devsouzx.ecommerce.repositories.AddressRepository;
-import com.devsouzx.ecommerce.repositories.UserAddressRepository;
-import com.devsouzx.ecommerce.repositories.UserRepository;
 import com.devsouzx.ecommerce.services.AddressService;
+import com.devsouzx.ecommerce.services.UserAddressService;
+import com.devsouzx.ecommerce.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,21 +20,17 @@ import java.util.UUID;
 @RequestMapping("/address")
 public class AddressController {
     @Autowired
-    private UserRepository userRepository;
-
-    @Autowired
-    private AddressRepository addressRepository;
-
-    @Autowired
     private AddressService addressService;
 
     @Autowired
-    private UserAddressRepository userAddressRepository;
+    private UserService userService;
+
+    @Autowired
+    private UserAddressService userAddressService;
 
     @GetMapping("/{id}")
     public ResponseEntity<AddressResponseDTO> getAddressById(@PathVariable UUID id) {
-        Address address = addressRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Address not found"));
+        Address address = addressService.findById(id);
 
         AddressResponseDTO addressDTO = new AddressResponseDTO(address.getId(), address.getCity(), address.getState(), address.getStreet(), address.getNumber(), address.getDistrict(), address.getAdditional(), address.getCode(), address.getUsers());
 
@@ -44,13 +39,13 @@ public class AddressController {
 
     @PostMapping("/{id}/{password}")
     public ResponseEntity<Address> addAddress(@PathVariable UUID id, @PathVariable String password, @RequestBody AddressRequestDTO body) {
-        User user = userRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("User not found"));
+        User user = userService.findById(id);
 
-        if (addressService.verifyPassword(user, password)) {
-            Address address = addressRepository.findByCityAndStateAndStreetAndNumber(body.city(), body.state(), body.street(), body.number()).orElseGet(() -> addressService.createAddress(body));
+        if (user.getAddresses() == null && addressService.verifyPassword(user, password)) {
+            Address address = addressService.findEqualsOrCreate(body);
 
             UserAddress userAddress = new UserAddress(new UserAddressPK(user, address));
-            userAddressRepository.save(userAddress);
+            userAddressService.saveUserAddress(userAddress);
 
             return ResponseEntity.ok(address);
         }

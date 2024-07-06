@@ -2,12 +2,15 @@ package com.devsouzx.ecommerce.services;
 
 import com.devsouzx.ecommerce.model.address.Address;
 import com.devsouzx.ecommerce.model.address.dto.AddressRequestDTO;
+import com.devsouzx.ecommerce.model.address.dto.AddressResponseDTO;
 import com.devsouzx.ecommerce.model.user.User;
 import com.devsouzx.ecommerce.repositories.AddressRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Objects;
+import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class AddressService {
@@ -27,5 +30,13 @@ public class AddressService {
         address.setAdditional(body.additional());
         address.setCode(body.code());
         return addressRepository.save(address);
+    }
+
+    public Address findById(UUID id) {
+        return addressRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Address not found"));
+    }
+
+    public Address findEqualsOrCreate(AddressRequestDTO body) {
+        return addressRepository.findByCityAndStateAndStreetAndNumber(body.city(), body.state(), body.street(), body.number()).orElseGet(() -> this.createAddress(body));
     }
 }

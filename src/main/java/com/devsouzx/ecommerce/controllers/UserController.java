@@ -2,7 +2,7 @@ package com.devsouzx.ecommerce.controllers;
 
 import com.devsouzx.ecommerce.model.user.dto.UserRequestDTO;
 import com.devsouzx.ecommerce.model.user.User;
-import com.devsouzx.ecommerce.repositories.UserRepository;
+import com.devsouzx.ecommerce.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,32 +14,32 @@ import java.util.UUID;
 @RequestMapping("/users")
 public class UserController {
     @Autowired
-    private UserRepository userRepository;
+    private UserService userService;
 
     @GetMapping
     public ResponseEntity<List<User>> getUsers() {
-        List<User> users = userRepository.findAll();
+        List<User> users = userService.findAll();
         return ResponseEntity.ok(users);
     }
 
     @PostMapping
     public ResponseEntity<User> register(@RequestBody UserRequestDTO body) {
         User user = new User();
-        if (userRepository.findByEmail(body.email()) != null) {
-            user = userRepository.findByEmail(body.email());
+        if (userService.findByEmail(body.email()) != null) {
+            user = userService.findByEmail(body.email());
         } else {
             user.setName(body.name());
             user.setEmail(body.email());
             user.setPhone(body.phone());
             user.setPassword(body.password());
-            userRepository.save(user);
+            userService.saveUser(user);
         }
         return ResponseEntity.ok(user);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<User> findById(@PathVariable UUID id) {
-        User user = userRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("User not found"));
+        User user = userService.findById(id);
         return ResponseEntity.ok(user);
     }
 }
