@@ -1,6 +1,6 @@
-package com.devsouzx.ecommerce.model.address.dto;
+package com.devsouzx.ecommerce.domain.address.dto;
 
-import com.devsouzx.ecommerce.model.user.User;
+import com.devsouzx.ecommerce.domain.user.User;
 
 import java.util.Set;
 import java.util.UUID;

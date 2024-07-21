@@ -1,6 +1,6 @@
 package com.devsouzx.ecommerce.services;
 
-import com.devsouzx.ecommerce.model.address.UserAddress;
+import com.devsouzx.ecommerce.domain.address.UserAddress;
 import com.devsouzx.ecommerce.repositories.UserAddressRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

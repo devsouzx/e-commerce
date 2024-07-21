@@ -1,16 +1,13 @@
 package com.devsouzx.ecommerce.services;
 
-import com.devsouzx.ecommerce.model.address.Address;
-import com.devsouzx.ecommerce.model.address.dto.AddressRequestDTO;
-import com.devsouzx.ecommerce.model.address.dto.AddressResponseDTO;
-import com.devsouzx.ecommerce.model.user.User;
-import com.devsouzx.ecommerce.model.user.dto.UserRequestDTO;
+import com.devsouzx.ecommerce.domain.address.Address;
+import com.devsouzx.ecommerce.domain.address.dto.AddressRequestDTO;
+import com.devsouzx.ecommerce.domain.user.User;
 import com.devsouzx.ecommerce.repositories.AddressRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Objects;
-import java.util.Optional;
 import java.util.UUID;
 
 @Service

@@ -1,7 +1,7 @@
-package com.devsouzx.ecommerce.model.address;
+package com.devsouzx.ecommerce.domain.address;
 
-import com.devsouzx.ecommerce.model.pk.UserAddressPK;
-import com.devsouzx.ecommerce.model.user.User;
+import com.devsouzx.ecommerce.domain.pk.UserAddressPK;
+import com.devsouzx.ecommerce.domain.user.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

@@ -1,7 +1,7 @@
-package com.devsouzx.ecommerce.model.user.dto;
+package com.devsouzx.ecommerce.domain.user.dto;
 
-import com.devsouzx.ecommerce.model.user.UserGender;
-import com.devsouzx.ecommerce.model.user.UserRole;
+import com.devsouzx.ecommerce.domain.user.UserGender;
+import com.devsouzx.ecommerce.domain.user.UserRole;
 
 import java.time.LocalDateTime;
 import java.util.Date;

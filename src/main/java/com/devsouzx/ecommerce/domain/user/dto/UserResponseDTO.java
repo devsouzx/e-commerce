@@ -1,4 +1,4 @@
-package com.devsouzx.ecommerce.model.user.dto;
+package com.devsouzx.ecommerce.domain.user.dto;
 
 import java.time.LocalDateTime;
 import java.util.Date;

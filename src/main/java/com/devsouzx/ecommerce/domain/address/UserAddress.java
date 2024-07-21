@@ -1,6 +1,6 @@
-package com.devsouzx.ecommerce.model.address;
+package com.devsouzx.ecommerce.domain.address;
 
-import com.devsouzx.ecommerce.model.pk.UserAddressPK;
+import com.devsouzx.ecommerce.domain.pk.UserAddressPK;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -1,7 +1,7 @@
-package com.devsouzx.ecommerce.model.pk;
+package com.devsouzx.ecommerce.domain.pk;
 
-import com.devsouzx.ecommerce.model.address.Address;
-import com.devsouzx.ecommerce.model.user.User;
+import com.devsouzx.ecommerce.domain.address.Address;
+import com.devsouzx.ecommerce.domain.user.User;
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;

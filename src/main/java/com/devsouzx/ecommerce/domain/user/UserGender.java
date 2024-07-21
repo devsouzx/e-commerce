@@ -1,4 +1,4 @@
-package com.devsouzx.ecommerce.model.user;
+package com.devsouzx.ecommerce.domain.user;
 
 public enum UserGender {
     MALE("male"),
