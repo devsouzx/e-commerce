@@ -1,6 +1,7 @@
 package com.devsouzx.ecommerce.services;
 
 import com.devsouzx.ecommerce.domain.user.User;
+import com.devsouzx.ecommerce.domain.user.UserRole;
 import com.devsouzx.ecommerce.domain.user.dto.UserRequestDTO;
 import com.devsouzx.ecommerce.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,7 @@ public class UserService {
         user.setEmail(body.email());
         user.setPhone(body.phone());
         user.setPassword(new BCryptPasswordEncoder().encode(body.password()));
-        user.setRole(body.role());
+        user.setRole(UserRole.USER);
         user.setBirthDate(body.birthDate());
         user.setGender(body.gender());
         user.setCreatedAt(LocalDateTime.now());
@@ -57,7 +58,7 @@ public class UserService {
         entity.setEmail(user.email());
         entity.setPhone(user.phone());
         entity.setPassword(user.password());
-        entity.setRole(user.role());
+        entity.setRole(UserRole.USER);
         entity.setBirthDate(user.birthDate());
         entity.setGender(user.gender());
         entity.setCreatedAt(user.createdAt());
