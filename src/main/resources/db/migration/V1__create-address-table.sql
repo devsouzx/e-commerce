@@ -5,10 +5,9 @@ CREATE TABLE address (
     city VARCHAR(255) NOT NULL,
     state VARCHAR(255) NOT NULL,
     country VARCHAR(255),
-    street_name VARCHAR(255) NOT NULL,
-    street_number INTEGER,
+    street VARCHAR(255) NOT NULL,
+    number INTEGER,
     district VARCHAR(255),
     additional TEXT,
-    zip_code VARCHAR(10),
-    address_type VARCHAR(50)
+    zip_code VARCHAR(10)
 );

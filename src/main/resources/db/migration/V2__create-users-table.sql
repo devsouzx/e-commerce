@@ -7,6 +7,7 @@ CREATE TABLE users (
     phone VARCHAR(20),
     password VARCHAR(255) NOT NULL,
     role VARCHAR(5),
-    birthDate DATE,
-    gender VARCHAR(10)
+    birth_date DATE,
+    gender VARCHAR(10),
+    created_at TIMESTAMP DEFAULT NOW(),
 );
