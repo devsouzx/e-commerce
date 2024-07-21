@@ -4,8 +4,11 @@ import com.devsouzx.ecommerce.domain.user.User;
 import com.devsouzx.ecommerce.domain.user.dto.UserRequestDTO;
 import com.devsouzx.ecommerce.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -14,11 +17,24 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
+    public User register(UserRequestDTO body) {
+        User user = new User();
+        user.setName(body.name());
+        user.setEmail(body.email());
+        user.setPhone(body.phone());
+        user.setPassword(new BCryptPasswordEncoder().encode(body.password()));
+        user.setRole(body.role());
+        user.setBirthDate(body.birthDate());
+        user.setGender(body.gender());
+        user.setCreatedAt(LocalDateTime.now());
+        return userRepository.save(user);
+    }
+
     public List<User> findAll() {
         return userRepository.findAll();
     }
 
-    public User findByEmail(String email) {
+    public UserDetails findByEmail(String email) {
         return userRepository.findByEmail(email);
     }
 

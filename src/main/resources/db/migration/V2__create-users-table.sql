@@ -9,5 +9,5 @@ CREATE TABLE users (
     role VARCHAR(5),
     birth_date DATE,
     gender VARCHAR(10),
-    created_at TIMESTAMP DEFAULT NOW(),
+    created_at TIMESTAMP DEFAULT NOW()
 );
