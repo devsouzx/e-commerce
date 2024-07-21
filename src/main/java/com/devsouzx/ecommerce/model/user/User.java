@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
@@ -23,6 +25,10 @@ public class User {
     private String email;
     private String phone;
     private String password;
+    private UserRole role;
+    private Date birthDate;
+    private UserGender gender;
+    private LocalDateTime createdAt;
 
     @OneToMany(mappedBy = "id.user", cascade = CascadeType.ALL)
     @JsonIgnore

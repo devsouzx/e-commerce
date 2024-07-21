@@ -31,7 +31,7 @@ public class AddressController {
     public ResponseEntity<AddressResponseDTO> getAddressById(@PathVariable UUID id) {
         Address address = addressService.findById(id);
 
-        AddressResponseDTO addressDTO = new AddressResponseDTO(address.getId(), address.getCity(), address.getState(), address.getStreet(), address.getNumber(), address.getDistrict(), address.getAdditional(), address.getCode(), address.getUsers());
+        AddressResponseDTO addressDTO = new AddressResponseDTO(address.getId(), address.getCity(), address.getState(), address.getCountry(), address.getStreet(), address.getNumber(), address.getDistrict(), address.getAdditional(), address.getZipCode(), address.getUsers());
 
         return ResponseEntity.ok(addressDTO);
     }

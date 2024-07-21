@@ -1,6 +1,5 @@
 package com.devsouzx.ecommerce.services;
 
-import com.devsouzx.ecommerce.model.address.UserAddress;
 import com.devsouzx.ecommerce.model.user.User;
 import com.devsouzx.ecommerce.model.user.dto.UserRequestDTO;
 import com.devsouzx.ecommerce.repositories.UserRepository;
@@ -8,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -43,5 +41,9 @@ public class UserService {
         entity.setEmail(user.email());
         entity.setPhone(user.phone());
         entity.setPassword(user.password());
+        entity.setRole(user.role());
+        entity.setBirthDate(user.birthDate());
+        entity.setGender(user.gender());
+        entity.setCreatedAt(user.createdAt());
     }
 }

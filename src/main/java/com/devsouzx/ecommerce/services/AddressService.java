@@ -25,11 +25,12 @@ public class AddressService {
         Address address = new Address();
         address.setCity(body.city());
         address.setState(body.state());
+        address.setCountry(body.country());
         address.setStreet(body.street());
         address.setNumber(body.number());
         address.setDistrict(body.district());
         address.setAdditional(body.additional());
-        address.setCode(body.code());
+        address.setZipCode(body.zipCode());
         return addressRepository.save(address);
     }
 
@@ -51,8 +52,9 @@ public class AddressService {
         entity.setCity(address.city());
         entity.setStreet(address.street());
         entity.setState(address.state());
+        entity.setCountry(address.country());
         entity.setNumber(address.number());
-        entity.setCode(address.code());
+        entity.setZipCode(address.zipCode());
         entity.setAdditional(address.additional());
         entity.setDistrict(address.district());
     }

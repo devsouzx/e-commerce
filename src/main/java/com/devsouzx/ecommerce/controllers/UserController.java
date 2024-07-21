@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -32,6 +33,10 @@ public class UserController {
             user.setEmail(body.email());
             user.setPhone(body.phone());
             user.setPassword(body.password());
+            user.setRole(body.role());
+            user.setBirthDate(body.birthDate());
+            user.setGender(body.gender());
+            user.setCreatedAt(LocalDateTime.now());
             userService.saveUser(user);
         }
         return ResponseEntity.ok(user);

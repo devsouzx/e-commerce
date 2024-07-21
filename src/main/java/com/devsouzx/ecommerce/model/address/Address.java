@@ -26,11 +26,12 @@ public class Address {
     private UUID id;
     private String city;
     private String state;
+    private String country;
     private String street;
     private Integer number;
     private String district;
     private String additional;
-    private Long code;
+    private String zipCode;
 
     @OneToMany(mappedBy = "id.address", cascade = CascadeType.ALL)
     @JsonIgnore
