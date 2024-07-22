@@ -1,5 +1,6 @@
 package com.devsouzx.ecommerce.controllers;
 
+import com.devsouzx.ecommerce.domain.address.dto.DeleteUserRequestDTO;
 import com.devsouzx.ecommerce.domain.user.User;
 import com.devsouzx.ecommerce.domain.user.dto.PasswordRequestDTO;
 import com.devsouzx.ecommerce.domain.user.dto.UserRequestDTO;
@@ -35,16 +36,29 @@ public class UserController {
     }
 
     @PutMapping("/{id}/update-password")
-    public ResponseEntity updatePassword(@PathVariable UUID id, @RequestBody PasswordRequestDTO body) {
+    public ResponseEntity<?> updatePassword(@PathVariable UUID id, @RequestBody PasswordRequestDTO body) {
         User user = userService.findById(id);
 
         if (!passwordEncoder.matches(body.oldPassword(), user.getPassword())) {
-            return ResponseEntity.badRequest().body("Password incorrect");
+            return ResponseEntity.badRequest().body("Wrong Password");
         }
 
         user.setPassword(passwordEncoder.encode(body.newPassword()));
         userService.saveUser(user);
 
         return ResponseEntity.ok().body("Password updated");
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteUser(@PathVariable UUID id, @RequestBody DeleteUserRequestDTO body) {
+        User user = userService.findById(id);
+
+        if (!passwordEncoder.matches(body.password(), user.getPassword())) {
+            return ResponseEntity.badRequest().body("Wrong Password");
+        }
+
+        userService.delete(user);
+
+        return ResponseEntity.ok().body("User deleted");
     }
 }

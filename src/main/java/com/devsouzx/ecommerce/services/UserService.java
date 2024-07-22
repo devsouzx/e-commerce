@@ -63,4 +63,8 @@ public class UserService {
         entity.setGender(user.gender());
         entity.setCreatedAt(user.createdAt());
     }
+
+    public void delete(User user) {
+        userRepository.delete(user);
+    }
 }
