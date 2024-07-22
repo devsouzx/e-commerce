@@ -1,4 +1,4 @@
-package com.devsouzx.ecommerce.domain.user.dto;
+package com.devsouzx.ecommerce.dtos;
 
 public record PasswordRequestDTO(String oldPassword, String newPassword) {
 }

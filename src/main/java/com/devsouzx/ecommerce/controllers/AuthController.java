@@ -1,10 +1,10 @@
 package com.devsouzx.ecommerce.controllers;
 
-import com.devsouzx.ecommerce.domain.user.dto.LoginDTO;
-import com.devsouzx.ecommerce.domain.user.dto.UserRequestDTO;
+import com.devsouzx.ecommerce.dtos.LoginDTO;
+import com.devsouzx.ecommerce.dtos.UserRequestDTO;
 import com.devsouzx.ecommerce.domain.user.User;
-import com.devsouzx.ecommerce.domain.user.dto.UserResponseDTO;
-import com.devsouzx.ecommerce.domain.user.dto.TokenResponseDTO;
+import com.devsouzx.ecommerce.dtos.UserResponseDTO;
+import com.devsouzx.ecommerce.dtos.TokenResponseDTO;
 import com.devsouzx.ecommerce.infra.security.TokenService;
 import com.devsouzx.ecommerce.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

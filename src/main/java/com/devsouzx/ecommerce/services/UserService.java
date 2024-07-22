@@ -2,7 +2,7 @@ package com.devsouzx.ecommerce.services;
 
 import com.devsouzx.ecommerce.domain.user.User;
 import com.devsouzx.ecommerce.domain.user.UserRole;
-import com.devsouzx.ecommerce.domain.user.dto.UserRequestDTO;
+import com.devsouzx.ecommerce.dtos.UserRequestDTO;
 import com.devsouzx.ecommerce.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;

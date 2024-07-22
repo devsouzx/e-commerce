@@ -1,4 +1,4 @@
-package com.devsouzx.ecommerce.domain.address.dto;
+package com.devsouzx.ecommerce.dtos;
 
 public record DeleteUserRequestDTO(String password) {
 }

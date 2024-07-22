@@ -2,8 +2,8 @@ package com.devsouzx.ecommerce.controllers;
 
 import com.devsouzx.ecommerce.domain.address.Address;
 import com.devsouzx.ecommerce.domain.address.UserAddress;
-import com.devsouzx.ecommerce.domain.address.dto.AddressRequestDTO;
-import com.devsouzx.ecommerce.domain.address.dto.AddressResponseDTO;
+import com.devsouzx.ecommerce.dtos.AddressRequestDTO;
+import com.devsouzx.ecommerce.dtos.AddressResponseDTO;
 import com.devsouzx.ecommerce.domain.pk.UserAddressPK;
 import com.devsouzx.ecommerce.domain.user.User;
 import com.devsouzx.ecommerce.services.AddressService;
@@ -42,7 +42,7 @@ public class AddressController {
 
         if (user.getAddresses() == null && addressService.verifyPassword(user, password)) {
             Address address = addressService.findEqualsOrCreate(body);
-
+ 
             UserAddress userAddress = new UserAddress(new UserAddressPK(user, address));
             userAddressService.saveUserAddress(userAddress);
 
