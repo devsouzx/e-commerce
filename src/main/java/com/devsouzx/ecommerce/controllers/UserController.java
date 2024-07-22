@@ -1,5 +1,6 @@
 package com.devsouzx.ecommerce.controllers;
 
+import com.devsouzx.ecommerce.dtos.AvatarRequestDTO;
 import com.devsouzx.ecommerce.dtos.DeleteUserRequestDTO;
 import com.devsouzx.ecommerce.domain.user.User;
 import com.devsouzx.ecommerce.dtos.PasswordRequestDTO;
@@ -59,5 +60,13 @@ public class UserController {
         userService.delete(user);
 
         return ResponseEntity.ok().body("User deleted");
+    }
+
+    @PostMapping("/{id}/avatar")
+    public ResponseEntity<?> avatar(@PathVariable UUID id, @RequestBody AvatarRequestDTO body) {
+        User user = userService.findById(id);
+        user.setAvatarUrl(body.avatarUrl());
+        userService.saveUser(user);
+        return ResponseEntity.ok().build();
     }
 }

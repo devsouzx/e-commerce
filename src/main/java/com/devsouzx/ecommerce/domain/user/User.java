@@ -29,6 +29,7 @@ public class User implements UserDetails {
     private Date birthDate;
     private UserGender gender;
     private LocalDateTime createdAt;
+    private String avatarUrl;
 
     @OneToMany(mappedBy = "id.user", cascade = CascadeType.ALL)
     @JsonIgnore
