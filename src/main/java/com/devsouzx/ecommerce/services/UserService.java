@@ -1,6 +1,8 @@
 package com.devsouzx.ecommerce.services;
 
+import com.devsouzx.ecommerce.domain.address.Address;
 import com.devsouzx.ecommerce.domain.user.User;
+import com.devsouzx.ecommerce.domain.user.UserGender;
 import com.devsouzx.ecommerce.domain.user.UserRole;
 import com.devsouzx.ecommerce.dtos.UserRequestDTO;
 import com.devsouzx.ecommerce.repositories.UserRepository;
@@ -19,15 +21,7 @@ public class UserService {
     private UserRepository userRepository;
 
     public User register(UserRequestDTO body) {
-        User user = new User();
-        user.setName(body.name());
-        user.setEmail(body.email());
-        user.setPhone(body.phone());
-        user.setPassword(new BCryptPasswordEncoder().encode(body.password()));
-        user.setRole(UserRole.USER);
-        user.setBirthDate(body.birthDate());
-        user.setGender(body.gender());
-        user.setCreatedAt(LocalDateTime.now());
+        User user = new User(body.name(), body.email(), new BCryptPasswordEncoder().encode(body.password()), body.phone(), body.birthDate(), body.gender(), UserRole.USER);
         return userRepository.save(user);
     }
 
@@ -35,7 +29,7 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public UserDetails findByEmail(String email) {
+    public User findByEmail(String email) {
         return userRepository.findByEmail(email);
     }
 
@@ -61,6 +55,7 @@ public class UserService {
         entity.setRole(UserRole.USER);
         entity.setBirthDate(user.birthDate());
         entity.setGender(user.gender());
+        entity.setAvatarUrl(user.avatarUrl());
         entity.setCreatedAt(user.createdAt());
     }
 

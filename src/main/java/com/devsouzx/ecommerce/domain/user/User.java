@@ -8,6 +8,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.*;
 
@@ -26,7 +27,8 @@ public class User implements UserDetails {
     private String phone;
     private String password;
     private UserRole role;
-    private Date birthDate;
+    private LocalDate birthDate;
+    @Enumerated(EnumType.STRING)
     private UserGender gender;
     private LocalDateTime createdAt;
     private String avatarUrl;
@@ -64,5 +66,18 @@ public class User implements UserDetails {
     @Override
     public boolean isEnabled() {
         return UserDetails.super.isEnabled();
+    }
+
+    public User(String name, String email, String password, String phone, LocalDate birthDate, UserGender gender, UserRole role) {
+        this.id = UUID.randomUUID();
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.phone = phone;
+        this.birthDate = birthDate;
+        this.gender = gender;
+        this.avatarUrl = "https://www.example.com/default-avatar.png";
+        this.createdAt = LocalDateTime.now();
+        this.role = role;
     }
 }

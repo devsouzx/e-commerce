@@ -1,8 +1,8 @@
 package com.devsouzx.ecommerce.domain.user;
 
 public enum UserGender {
-    MALE("male"),
-    FEMALE("female");
+    MALE("Male"),
+    FEMALE("Female");
 
     private String gender;
 

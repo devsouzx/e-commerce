@@ -41,7 +41,8 @@ public class AuthController {
         Authentication auth = this.authenticationManager.authenticate(usernamePassword);
 
         String token = tokenService.generateToken((User) auth.getPrincipal());
+        User user = (User) userService.findByEmail(body.email()); // Obter o usuário pelo email
 
-        return ResponseEntity.ok(new TokenResponseDTO(token));
+        return ResponseEntity.ok(new TokenResponseDTO(token, user.getId().toString()));
     }
 }

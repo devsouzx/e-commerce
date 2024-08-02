@@ -1,4 +1,4 @@
 package com.devsouzx.ecommerce.dtos;
 
-public record TokenResponseDTO(String token) {
+public record TokenResponseDTO(String token, String id) {
 }

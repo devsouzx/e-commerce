@@ -2,21 +2,16 @@ package com.devsouzx.ecommerce.services;
 
 import com.devsouzx.ecommerce.domain.address.Address;
 import com.devsouzx.ecommerce.dtos.AddressRequestDTO;
-import com.devsouzx.ecommerce.domain.user.User;
 import com.devsouzx.ecommerce.repositories.AddressRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Objects;
 import java.util.UUID;
 
 @Service
 public class AddressService {
     @Autowired
     private AddressRepository addressRepository;
-    public Boolean verifyPassword(User user, String password) {
-        return Objects.equals(user.getPassword(), password);
-    }
 
     public Address createAddress(AddressRequestDTO body) {
         Address address = new Address();
