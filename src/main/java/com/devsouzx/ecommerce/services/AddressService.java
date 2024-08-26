@@ -1,17 +1,23 @@
 package com.devsouzx.ecommerce.services;
 
 import com.devsouzx.ecommerce.domain.address.Address;
+import com.devsouzx.ecommerce.domain.user.User;
 import com.devsouzx.ecommerce.dtos.AddressRequestDTO;
 import com.devsouzx.ecommerce.repositories.AddressRepository;
+import com.devsouzx.ecommerce.repositories.UserAddressRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
 
 @Service
 public class AddressService {
     @Autowired
     private AddressRepository addressRepository;
+
+    @Autowired
+    private UserAddressRepository userAddressRepository;
 
     public Address createAddress(AddressRequestDTO body) {
         Address address = new Address();
@@ -49,5 +55,9 @@ public class AddressService {
         entity.setZipCode(address.zipCode());
         entity.setAdditional(address.additional());
         entity.setDistrict(address.district());
+    }
+
+    public List<Address> findAddressesByUser(User user) {
+        return userAddressRepository.findAddressesByUser(user);
     }
 }

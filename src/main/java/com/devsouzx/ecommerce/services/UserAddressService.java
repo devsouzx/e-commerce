@@ -10,7 +10,7 @@ public class UserAddressService {
     @Autowired
     private UserAddressRepository userAddressRepository;
 
-    public void saveUserAddress(UserAddress userAddress) {
-        userAddressRepository.save(userAddress);
+    public UserAddress saveUserAddress(UserAddress userAddress) {
+        return userAddressRepository.save(userAddress);
     }
 }

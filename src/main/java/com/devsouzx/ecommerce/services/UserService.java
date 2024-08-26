@@ -1,17 +1,13 @@
 package com.devsouzx.ecommerce.services;
 
-import com.devsouzx.ecommerce.domain.address.Address;
 import com.devsouzx.ecommerce.domain.user.User;
-import com.devsouzx.ecommerce.domain.user.UserGender;
 import com.devsouzx.ecommerce.domain.user.UserRole;
 import com.devsouzx.ecommerce.dtos.UserRequestDTO;
 import com.devsouzx.ecommerce.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 

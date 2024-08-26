@@ -2,11 +2,9 @@ package com.devsouzx.ecommerce.controllers;
 
 import com.devsouzx.ecommerce.domain.address.Address;
 import com.devsouzx.ecommerce.domain.address.UserAddress;
-import com.devsouzx.ecommerce.domain.pk.UserAddressPK;
 import com.devsouzx.ecommerce.dtos.AddressRequestDTO;
 import com.devsouzx.ecommerce.dtos.AddressResponseDTO;
 import com.devsouzx.ecommerce.domain.user.User;
-import com.devsouzx.ecommerce.dtos.UserResponseDTO;
 import com.devsouzx.ecommerce.services.AddressService;
 import com.devsouzx.ecommerce.services.UserAddressService;
 import com.devsouzx.ecommerce.services.UserService;
@@ -42,19 +40,28 @@ public class  AddressController {
     @PostMapping("/{id}")
     public ResponseEntity<Address> addAddress(@PathVariable UUID id, @RequestBody AddressRequestDTO body) {
         User user = userService.findById(id);
-
-        if (user.getAddresses().isEmpty()) {
-            Address address = addressService.findEqualsOrCreate(body);
-            UserAddress userAddress = new UserAddress(new UserAddressPK(user, address));
-            userAddressService.saveUserAddress(userAddress);
-            return ResponseEntity.ok(address);
-        }
-        return ResponseEntity.badRequest().build();
+        Address address = addressService.findEqualsOrCreate(body);
+        UserAddress userAddress = new UserAddress(user, address);
+        userAddressService.saveUserAddress(userAddress);
+        return ResponseEntity.ok(address);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Address> updateAddress(@PathVariable UUID id, @RequestBody AddressRequestDTO body) {
         Address address = addressService.update(id, body);
         return ResponseEntity.ok(address);
+    }
+
+    @GetMapping("/user/{id}")
+    public ResponseEntity<List<AddressResponseDTO>> getAddressesByUserId(@PathVariable UUID id) {
+        User user = userService.findById(id);
+        if (user == null) {
+            return ResponseEntity.notFound().build();
+        }
+
+        List<AddressResponseDTO> addressDTOs = user.getAddresses().stream()
+                .map(AddressResponseDTO::new)
+                .collect(Collectors.toList());
+        return ResponseEntity.ok(addressDTOs);
     }
 }

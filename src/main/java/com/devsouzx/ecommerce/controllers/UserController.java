@@ -1,14 +1,16 @@
 package com.devsouzx.ecommerce.controllers;
 
-import com.devsouzx.ecommerce.dtos.*;
+import com.devsouzx.ecommerce.dtos.AvatarRequestDTO;
+import com.devsouzx.ecommerce.dtos.DeleteUserRequestDTO;
 import com.devsouzx.ecommerce.domain.user.User;
+import com.devsouzx.ecommerce.dtos.PasswordRequestDTO;
+import com.devsouzx.ecommerce.dtos.UserResponseDTO;
 import com.devsouzx.ecommerce.services.AddressService;
 import com.devsouzx.ecommerce.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.UUID;
 
@@ -31,9 +33,23 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<User> findById(@PathVariable UUID id) {
+    public ResponseEntity<UserResponseDTO> findById(@PathVariable UUID id) {
         User user = userService.findById(id);
-        return ResponseEntity.ok(user);
+        UserResponseDTO userDTO = new UserResponseDTO(user);
+        return ResponseEntity.ok(userDTO);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteUser(@PathVariable UUID id, @RequestBody DeleteUserRequestDTO body) {
+        User user = userService.findById(id);
+
+        if (!passwordEncoder.matches(body.password(), user.getPassword())) {
+            return ResponseEntity.badRequest().body("Wrong Password");
+        }
+
+        userService.delete(user);
+
+        return ResponseEntity.ok().body("User deleted");
     }
 
     @PutMapping("/{id}/update-password")
@@ -48,19 +64,6 @@ public class UserController {
         userService.saveUser(user);
 
         return ResponseEntity.ok().body("Password updated");
-    }
-
-    @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteUser(@PathVariable UUID id, @RequestBody DeleteUserRequestDTO body) {
-        User user = userService.findById(id);
-
-        if (!passwordEncoder.matches(body.password(), user.getPassword())) {
-            return ResponseEntity.badRequest().body("Wrong Password");
-        }
-
-        userService.delete(user);
-
-        return ResponseEntity.ok().body("User deleted");
     }
 
     @PostMapping("/{id}/avatar")

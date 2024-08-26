@@ -1,12 +1,13 @@
 package com.devsouzx.ecommerce.domain.address;
 
-import com.devsouzx.ecommerce.domain.pk.UserAddressPK;
 import com.devsouzx.ecommerce.domain.user.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.UUID;
 
 @Table(name = "user_address")
 @Entity
@@ -15,6 +16,20 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserAddress {
-    @EmbeddedId
-    private UserAddressPK id = new UserAddressPK();
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "address_id", nullable = false)
+    private Address address;
+
+    public UserAddress(User user, Address address) {
+        this.user = user;
+        this.address = address;
+    }
 }
