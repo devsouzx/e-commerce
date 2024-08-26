@@ -1,7 +1,6 @@
 package com.devsouzx.ecommerce.dtos;
 
 import com.devsouzx.ecommerce.domain.address.Address;
-import com.devsouzx.ecommerce.domain.user.User;
 
 import java.util.UUID;
 

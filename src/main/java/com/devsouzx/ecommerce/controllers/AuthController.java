@@ -1,6 +1,5 @@
 package com.devsouzx.ecommerce.controllers;
 
-import com.devsouzx.ecommerce.domain.user.UserRole;
 import com.devsouzx.ecommerce.dtos.LoginDTO;
 import com.devsouzx.ecommerce.dtos.UserRequestDTO;
 import com.devsouzx.ecommerce.domain.user.User;

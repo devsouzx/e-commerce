@@ -31,25 +31,22 @@ public class  AddressController {
     @GetMapping("/{id}")
     public ResponseEntity<AddressResponseDTO> getAddressById(@PathVariable UUID id) {
         Address address = addressService.findById(id);
-
-        AddressResponseDTO addressDTO = new AddressResponseDTO(address);
-
-        return ResponseEntity.ok(addressDTO);
+        return ResponseEntity.ok(new AddressResponseDTO(address));
     }
 
     @PostMapping("/{id}")
-    public ResponseEntity<Address> addAddress(@PathVariable UUID id, @RequestBody AddressRequestDTO body) {
+    public ResponseEntity<AddressResponseDTO> addAddress(@PathVariable UUID id, @RequestBody AddressRequestDTO body) {
         User user = userService.findById(id);
         Address address = addressService.findEqualsOrCreate(body);
         UserAddress userAddress = new UserAddress(user, address);
         userAddressService.saveUserAddress(userAddress);
-        return ResponseEntity.ok(address);
+        return ResponseEntity.ok(new AddressResponseDTO(address));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Address> updateAddress(@PathVariable UUID id, @RequestBody AddressRequestDTO body) {
+    public ResponseEntity<AddressResponseDTO> updateAddress(@PathVariable UUID id, @RequestBody AddressRequestDTO body) {
         Address address = addressService.update(id, body);
-        return ResponseEntity.ok(address);
+        return ResponseEntity.ok(new AddressResponseDTO(address));
     }
 
     @GetMapping("/user/{id}")
