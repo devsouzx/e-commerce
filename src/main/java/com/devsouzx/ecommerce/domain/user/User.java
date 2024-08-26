@@ -1,5 +1,6 @@
 package com.devsouzx.ecommerce.domain.user;
 
+import com.devsouzx.ecommerce.domain.address.Address;
 import com.devsouzx.ecommerce.domain.address.UserAddress;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
@@ -11,6 +12,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Table(name = "users")
 @Entity
@@ -28,14 +30,13 @@ public class User implements UserDetails {
     private String password;
     private UserRole role;
     private LocalDate birthDate;
-    @Enumerated(EnumType.STRING)
     private UserGender gender;
     private LocalDateTime createdAt;
     private String avatarUrl;
 
-    @OneToMany(mappedBy = "id.user", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore
-    private Set<UserAddress> addresses = new HashSet<>();
+    private List<UserAddress> addresses = new ArrayList<>();
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -79,5 +80,11 @@ public class User implements UserDetails {
         this.avatarUrl = "https://www.example.com/default-avatar.png";
         this.createdAt = LocalDateTime.now();
         this.role = role;
+    }
+
+    public List<Address> getAddresses() {
+        return addresses.stream()
+                .map(UserAddress::getAddress)
+                .collect(Collectors.toList());
     }
 }
