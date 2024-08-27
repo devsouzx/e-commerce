@@ -77,7 +77,7 @@ public class User implements UserDetails {
         this.phone = phone;
         this.birthDate = birthDate;
         this.gender = gender;
-        this.avatarUrl = "https://www.example.com/default-avatar.png";
+        this.avatarUrl = "https://as2.ftcdn.net/v2/jpg/05/89/93/27/1000_F_589932782_vQAEAZhHnq1QCGu5ikwrYaQD0Mmurm0N.jpg";
         this.createdAt = LocalDateTime.now();
         this.role = role;
     }
