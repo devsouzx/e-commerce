@@ -1,7 +1,5 @@
 package com.devsouzx.ecommerce.domain.address;
 
-import com.devsouzx.ecommerce.domain.user.User;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,7 +7,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Table(name = "address")
 @Entity
