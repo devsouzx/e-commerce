@@ -1,5 +1,6 @@
 package com.devsouzx.ecommerce.infra.security;
 
+import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.devsouzx.ecommerce.services.UserService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -27,11 +28,19 @@ public class SecurityFilter extends OncePerRequestFilter {
         String token = this.recoverToken(request);
 
         if (token != null) {
-            String email = this.tokenService.validateToken(token);
-            UserDetails user = this.userService.findByEmail(email);
+            try {
+                String email = this.tokenService.validateToken(token);
+                UserDetails user = this.userService.findByEmail(email);
 
-            UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
-            SecurityContextHolder.getContext().setAuthentication(authentication);
+                if (user != null) {
+                    UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
+                    SecurityContextHolder.getContext().setAuthentication(authentication);
+                }
+            } catch (JWTVerificationException e) {
+                response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+                response.getWriter().write("Acesso negado");
+                return;
+            }
         }
 
         filterChain.doFilter(request, response);
