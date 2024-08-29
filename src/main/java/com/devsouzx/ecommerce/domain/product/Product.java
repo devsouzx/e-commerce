@@ -26,4 +26,14 @@ public class Product {
     private BigDecimal price;
     private Integer stockQuantity;
     private LocalDateTime createdAt;
+    private UUID categoryId;
+
+    public Product(String name, String description, BigDecimal price, Integer stockQuantity, UUID categoryIdentifier, LocalDateTime createdAt) {
+        this.stockQuantity = stockQuantity;
+        this.categoryId = categoryIdentifier;
+        this.createdAt = createdAt;
+        this.price = price;
+        this.name = name;
+        this.description = description;
+    }
 }
