@@ -26,6 +26,10 @@ public class ProductService {
         return productRepository.findByCategoryId(id);
     }
 
+    public List<Product> findProductsByBrandId(UUID id) {
+        return productRepository.findByBrandId(id);
+    }
+
     public Product findById(UUID id) {
         return productRepository.findById(id).orElseThrow(() -> new RuntimeException("Product not found!"));
     }
@@ -46,5 +50,6 @@ public class ProductService {
         product.setPrice(body.price());
         product.setStockQuantity(body.stockQuantity());
         product.setCategoryId(body.categoryId());
+        product.setBrandId(body.brandId());
     }
 }

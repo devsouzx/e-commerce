@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -27,10 +26,12 @@ public class Product {
     private Integer stockQuantity;
     private LocalDateTime createdAt;
     private UUID categoryId;
+    private UUID brandId;
 
-    public Product(String name, String description, BigDecimal price, Integer stockQuantity, UUID categoryIdentifier, LocalDateTime createdAt) {
+    public Product(String name, String description, BigDecimal price, Integer stockQuantity, UUID categoryId, UUID brandId, LocalDateTime createdAt) {
         this.stockQuantity = stockQuantity;
-        this.categoryId = categoryIdentifier;
+        this.categoryId = categoryId;
+        this.brandId = brandId;
         this.createdAt = createdAt;
         this.price = price;
         this.name = name;

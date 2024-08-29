@@ -20,4 +20,9 @@ public class Brand {
     private UUID id;
     private String name;
     private String description;
+
+    public Brand(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
 }

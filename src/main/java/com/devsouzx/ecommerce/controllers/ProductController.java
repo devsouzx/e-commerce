@@ -1,11 +1,9 @@
 package com.devsouzx.ecommerce.controllers;
 
-import com.devsouzx.ecommerce.domain.product.Category;
 import com.devsouzx.ecommerce.domain.product.Product;
-import com.devsouzx.ecommerce.dtos.CategoryRequestDTO;
-import com.devsouzx.ecommerce.dtos.CategoryResponseDTO;
 import com.devsouzx.ecommerce.dtos.ProductRequestDTO;
 import com.devsouzx.ecommerce.dtos.ProductResponseDTO;
+import com.devsouzx.ecommerce.services.BrandService;
 import com.devsouzx.ecommerce.services.CategoryService;
 import com.devsouzx.ecommerce.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,23 +23,26 @@ public class ProductController {
     @Autowired
     private CategoryService categoryService;
 
+    @Autowired
+    private BrandService brandService;
+
     @GetMapping
     public ResponseEntity<List<ProductResponseDTO>> getProducts() {
-        List<ProductResponseDTO> products = productService.findAll().stream().map(product -> new ProductResponseDTO(product, categoryService.findById(product.getCategoryId()))).toList();
+        List<ProductResponseDTO> products = productService.findAll().stream().map(product -> new ProductResponseDTO(product, categoryService, brandService)).toList();
         return ResponseEntity.ok(products);
     }
 
     @PostMapping
     public ResponseEntity<ProductResponseDTO> createProduct(@RequestBody ProductRequestDTO body) {
-        Product product = new Product(body.name(), body.description(), body.price(), body.stockQuantity(), body.categoryId(), LocalDateTime.now());
+        Product product = new Product(body.name(), body.description(), body.price(), body.stockQuantity(), body.categoryId(), body.brandId(), LocalDateTime.now());
         productService.save(product);
-        return ResponseEntity.ok(new ProductResponseDTO(product, categoryService.findById(body.categoryId())));
+        return ResponseEntity.ok(new ProductResponseDTO(product, categoryService, brandService));
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<ProductResponseDTO> getProductById(@PathVariable UUID id) {
         Product product = productService.findById(id);
-        return ResponseEntity.ok(new ProductResponseDTO(product, categoryService.findById(product.getCategoryId())));
+        return ResponseEntity.ok(new ProductResponseDTO(product, categoryService, brandService));
     }
 
     @DeleteMapping("/{id}")
@@ -57,6 +58,6 @@ public class ProductController {
     @PutMapping("/{id}")
     public ResponseEntity<ProductResponseDTO> updateProduct(@PathVariable UUID id, @RequestBody ProductRequestDTO body) {
         Product product = productService.update(id, body);
-        return ResponseEntity.ok(new ProductResponseDTO(product, categoryService.findById(product.getCategoryId())));
+        return ResponseEntity.ok(new ProductResponseDTO(product, categoryService, brandService));
     }
 }

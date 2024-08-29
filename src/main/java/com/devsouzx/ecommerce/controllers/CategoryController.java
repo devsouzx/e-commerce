@@ -4,6 +4,7 @@ import com.devsouzx.ecommerce.domain.product.Category;
 import com.devsouzx.ecommerce.dtos.CategoryRequestDTO;
 import com.devsouzx.ecommerce.dtos.CategoryResponseDTO;
 import com.devsouzx.ecommerce.dtos.ProductResponseDTO;
+import com.devsouzx.ecommerce.services.BrandService;
 import com.devsouzx.ecommerce.services.CategoryService;
 import com.devsouzx.ecommerce.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,9 @@ public class CategoryController {
 
     @Autowired
     private ProductService productService;
+
+    @Autowired
+    private BrandService brandService;
 
     @GetMapping
     public ResponseEntity<List<CategoryResponseDTO>> getCategories() {
@@ -44,7 +48,7 @@ public class CategoryController {
     @GetMapping("/{categoryName}/products")
     public ResponseEntity<List<ProductResponseDTO>> getProductsByCategory(@PathVariable String categoryName) {
         Category category = categoryService.findCategoryByName(categoryName);
-        List<ProductResponseDTO> products = productService.findProductsByCategoryId(category.getId()).stream().map(product -> new ProductResponseDTO(product, categoryService.findById(product.getCategoryId()))).toList();
+        List<ProductResponseDTO> products = productService.findProductsByCategoryId(category.getId()).stream().map(product -> new ProductResponseDTO(product, categoryService, brandService)).toList();
         return ResponseEntity.ok(products);
     }
 
