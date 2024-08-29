@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.UUID;
+import java.util.*;
 
 @Table(name = "category")
 @Entity
@@ -20,4 +20,9 @@ public class Category {
     private UUID id;
     private String name;
     private String description;
+
+    public Category(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
 }
