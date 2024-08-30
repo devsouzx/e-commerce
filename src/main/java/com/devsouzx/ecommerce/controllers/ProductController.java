@@ -1,10 +1,13 @@
 package com.devsouzx.ecommerce.controllers;
 
 import com.devsouzx.ecommerce.domain.product.Product;
+import com.devsouzx.ecommerce.domain.product.ProductImage;
+import com.devsouzx.ecommerce.dtos.ImageRequestDTO;
 import com.devsouzx.ecommerce.dtos.ProductRequestDTO;
 import com.devsouzx.ecommerce.dtos.ProductResponseDTO;
 import com.devsouzx.ecommerce.services.BrandService;
 import com.devsouzx.ecommerce.services.CategoryService;
+import com.devsouzx.ecommerce.services.ProductImageService;
 import com.devsouzx.ecommerce.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +22,9 @@ import java.util.UUID;
 public class ProductController {
     @Autowired
     private ProductService productService;
+
+    @Autowired
+    private ProductImageService productImageService;
 
     @Autowired
     private CategoryService categoryService;
@@ -58,6 +64,14 @@ public class ProductController {
     @PutMapping("/{id}")
     public ResponseEntity<ProductResponseDTO> updateProduct(@PathVariable UUID id, @RequestBody ProductRequestDTO body) {
         Product product = productService.update(id, body);
+        return ResponseEntity.ok(new ProductResponseDTO(product, categoryService, brandService));
+    }
+
+    @PostMapping("/{id}/image")
+    public ResponseEntity<?> addImageToProduct(@PathVariable UUID id, @RequestBody ImageRequestDTO image) {
+        Product product = productService.findById(id);
+        ProductImage productImage = new ProductImage(product, image.imageUrl());
+        productImageService.save(productImage);
         return ResponseEntity.ok(new ProductResponseDTO(product, categoryService, brandService));
     }
 }
