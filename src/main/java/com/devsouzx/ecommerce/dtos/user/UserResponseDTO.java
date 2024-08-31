@@ -1,9 +1,9 @@
-package com.devsouzx.ecommerce.dtos;
+package com.devsouzx.ecommerce.dtos.user;
 
-import com.devsouzx.ecommerce.domain.address.Address;
 import com.devsouzx.ecommerce.domain.user.User;
 import com.devsouzx.ecommerce.domain.user.UserGender;
 import com.devsouzx.ecommerce.domain.user.UserRole;
+import com.devsouzx.ecommerce.dtos.address.AddressResponseDTO;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;

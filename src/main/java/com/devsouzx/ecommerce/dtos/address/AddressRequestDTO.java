@@ -1,4 +1,4 @@
-package com.devsouzx.ecommerce.dtos;
+package com.devsouzx.ecommerce.dtos.address;
 
 public record AddressRequestDTO(String city,
                                 String state,

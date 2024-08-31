@@ -1,6 +1,6 @@
-package com.devsouzx.ecommerce.dtos;
+package com.devsouzx.ecommerce.dtos.brand;
 
-import com.devsouzx.ecommerce.domain.product.Brand;
+import com.devsouzx.ecommerce.domain.brand.Brand;
 
 import java.util.UUID;
 

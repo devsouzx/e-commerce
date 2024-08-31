@@ -1,4 +1,4 @@
-package com.devsouzx.ecommerce.dtos;
+package com.devsouzx.ecommerce.dtos.product;
 
 import com.devsouzx.ecommerce.domain.product.Product;
 import com.devsouzx.ecommerce.services.BrandService;

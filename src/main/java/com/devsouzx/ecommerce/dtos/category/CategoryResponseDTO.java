@@ -1,6 +1,6 @@
-package com.devsouzx.ecommerce.dtos;
+package com.devsouzx.ecommerce.dtos.category;
 
-import com.devsouzx.ecommerce.domain.product.Category;
+import com.devsouzx.ecommerce.domain.category.Category;
 
 import java.util.UUID;
 

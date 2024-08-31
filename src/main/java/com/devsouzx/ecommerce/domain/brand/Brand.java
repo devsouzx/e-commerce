@@ -1,4 +1,4 @@
-package com.devsouzx.ecommerce.domain.product;
+package com.devsouzx.ecommerce.domain.brand;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -6,22 +6,22 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.*;
+import java.util.UUID;
 
-@Table(name = "category")
+@Table(name = "brand")
 @Entity
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Category {
+public class Brand {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     private String name;
     private String description;
 
-    public Category(String name, String description) {
+    public Brand(String name, String description) {
         this.name = name;
         this.description = description;
     }

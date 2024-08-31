@@ -1,4 +1,4 @@
-package com.devsouzx.ecommerce.dtos;
+package com.devsouzx.ecommerce.dtos.address;
 
 import com.devsouzx.ecommerce.domain.address.Address;
 

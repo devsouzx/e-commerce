@@ -1,9 +1,9 @@
 package com.devsouzx.ecommerce.controllers;
 
-import com.devsouzx.ecommerce.domain.product.Category;
-import com.devsouzx.ecommerce.dtos.CategoryRequestDTO;
-import com.devsouzx.ecommerce.dtos.CategoryResponseDTO;
-import com.devsouzx.ecommerce.dtos.ProductResponseDTO;
+import com.devsouzx.ecommerce.domain.category.Category;
+import com.devsouzx.ecommerce.dtos.category.CategoryRequestDTO;
+import com.devsouzx.ecommerce.dtos.category.CategoryResponseDTO;
+import com.devsouzx.ecommerce.dtos.product.ProductResponseDTO;
 import com.devsouzx.ecommerce.services.BrandService;
 import com.devsouzx.ecommerce.services.CategoryService;
 import com.devsouzx.ecommerce.services.ProductService;
@@ -39,15 +39,15 @@ public class CategoryController {
         return ResponseEntity.ok(new CategoryResponseDTO(category));
     }
 
-    @GetMapping("/{categoryName}")
-    public ResponseEntity<CategoryResponseDTO> getCategory(@PathVariable String categoryName) {
-        Category category = categoryService.findCategoryByName(categoryName);
+    @GetMapping("/{id}")
+    public ResponseEntity<CategoryResponseDTO> getCategory(@PathVariable UUID id) {
+        Category category = categoryService.findById(id);
         return ResponseEntity.ok(new CategoryResponseDTO(category));
     }
 
-    @GetMapping("/{categoryName}/products")
-    public ResponseEntity<List<ProductResponseDTO>> getProductsByCategory(@PathVariable String categoryName) {
-        Category category = categoryService.findCategoryByName(categoryName);
+    @GetMapping("/{id}/products")
+    public ResponseEntity<List<ProductResponseDTO>> getProductsByCategory(@PathVariable UUID id) {
+        Category category = categoryService.findById(id);
         List<ProductResponseDTO> products = productService.findProductsByCategoryId(category.getId()).stream().map(product -> new ProductResponseDTO(product, categoryService, brandService)).toList();
         return ResponseEntity.ok(products);
     }

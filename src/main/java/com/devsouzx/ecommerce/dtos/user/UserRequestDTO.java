@@ -1,4 +1,4 @@
-package com.devsouzx.ecommerce.dtos;
+package com.devsouzx.ecommerce.dtos.user;
 
 import com.devsouzx.ecommerce.domain.user.UserGender;
 

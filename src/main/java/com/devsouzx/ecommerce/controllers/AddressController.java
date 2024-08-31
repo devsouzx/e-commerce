@@ -2,8 +2,8 @@ package com.devsouzx.ecommerce.controllers;
 
 import com.devsouzx.ecommerce.domain.address.Address;
 import com.devsouzx.ecommerce.domain.address.UserAddress;
-import com.devsouzx.ecommerce.dtos.AddressRequestDTO;
-import com.devsouzx.ecommerce.dtos.AddressResponseDTO;
+import com.devsouzx.ecommerce.dtos.address.AddressRequestDTO;
+import com.devsouzx.ecommerce.dtos.address.AddressResponseDTO;
 import com.devsouzx.ecommerce.domain.user.User;
 import com.devsouzx.ecommerce.services.AddressService;
 import com.devsouzx.ecommerce.services.UserAddressService;

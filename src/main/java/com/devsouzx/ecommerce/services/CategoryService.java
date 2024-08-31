@@ -1,8 +1,8 @@
 package com.devsouzx.ecommerce.services;
 
-import com.devsouzx.ecommerce.domain.product.Category;
+import com.devsouzx.ecommerce.domain.category.Category;
 import com.devsouzx.ecommerce.domain.product.Product;
-import com.devsouzx.ecommerce.dtos.CategoryRequestDTO;
+import com.devsouzx.ecommerce.dtos.category.CategoryRequestDTO;
 import com.devsouzx.ecommerce.repositories.CategoryRepository;
 import com.devsouzx.ecommerce.repositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;

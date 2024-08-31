@@ -1,4 +1,4 @@
-package com.devsouzx.ecommerce.dtos;
+package com.devsouzx.ecommerce.dtos.product;
 
 import java.math.BigDecimal;
 import java.util.UUID;
