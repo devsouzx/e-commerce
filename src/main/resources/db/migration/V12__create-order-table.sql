@@ -1,0 +1,6 @@
+CREATE TABLE order_tb (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  status INTEGER NOT NULL,
+  moment TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW(),
+  user_id UUID NOT NULL
+)
