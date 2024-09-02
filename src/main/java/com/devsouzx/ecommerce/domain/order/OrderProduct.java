@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.math.BigDecimal;
 import java.util.UUID;
 
 @Table(name = "order_product")
@@ -26,5 +27,17 @@ public class OrderProduct {
     @JoinColumn(name = "product_id")
     private Product product;
     private Integer quantity;
-    private Double price;
+    private BigDecimal price;
+
+    public OrderProduct(Order order, Product product, Integer quantity) {
+        this.order = order;
+        this.price = product.getPrice();
+        this.quantity = quantity;
+        this.product = product;
+    }
+
+    public BigDecimal getSubTotal() {
+        BigDecimal quantityBigDecimal = new BigDecimal(quantity);
+        return quantityBigDecimal.multiply(price);
+    }
 }
