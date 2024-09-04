@@ -1,6 +1,8 @@
 package com.devsouzx.ecommerce.domain.order;
 
 import com.devsouzx.ecommerce.domain.address.Address;
+import com.devsouzx.ecommerce.domain.product.Product;
+import com.devsouzx.ecommerce.domain.product.ProductImage;
 import com.devsouzx.ecommerce.domain.user.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -13,6 +15,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Table(name = "order_tb")
 @Entity

@@ -1,6 +1,8 @@
 package com.devsouzx.ecommerce.domain.product;
 
 import com.devsouzx.ecommerce.domain.address.UserAddress;
+import com.devsouzx.ecommerce.domain.order.OrderProduct;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -34,6 +36,9 @@ public class Product {
     private UUID brandId;
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<ProductImage> images = new ArrayList<>();
+
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<OrderProduct> orders = new ArrayList<>();
 
     public Product(String name, String description, BigDecimal price, Integer stockQuantity, UUID categoryId, UUID brandId, LocalDateTime createdAt) {
         this.stockQuantity = stockQuantity;
