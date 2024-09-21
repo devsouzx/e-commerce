@@ -1,10 +1,10 @@
 package com.devsouzx.ecommerce.controllers;
 
-import com.devsouzx.ecommerce.domain.product.Product;
-import com.devsouzx.ecommerce.domain.product.ProductImage;
-import com.devsouzx.ecommerce.dtos.product.ImageRequestDTO;
-import com.devsouzx.ecommerce.dtos.product.ProductRequestDTO;
-import com.devsouzx.ecommerce.dtos.product.ProductResponseDTO;
+import com.devsouzx.ecommerce.model.Product;
+import com.devsouzx.ecommerce.model.ProductImage;
+import com.devsouzx.ecommerce.requests.ImageRequestDTO;
+import com.devsouzx.ecommerce.requests.ProductRequestDTO;
+import com.devsouzx.ecommerce.responses.ProductResponseDTO;
 import com.devsouzx.ecommerce.services.brand.IBrandService;
 import com.devsouzx.ecommerce.services.category.ICategoryService;
 import com.devsouzx.ecommerce.services.product.IProductImageService;

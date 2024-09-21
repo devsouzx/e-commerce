@@ -1,8 +1,8 @@
 package com.devsouzx.ecommerce.services.address;
 
-import com.devsouzx.ecommerce.domain.address.Address;
-import com.devsouzx.ecommerce.domain.user.User;
-import com.devsouzx.ecommerce.dtos.address.AddressRequestDTO;
+import com.devsouzx.ecommerce.model.Address;
+import com.devsouzx.ecommerce.model.User;
+import com.devsouzx.ecommerce.requests.AddressRequestDTO;
 import com.devsouzx.ecommerce.repositories.AddressRepository;
 import com.devsouzx.ecommerce.repositories.UserAddressRepository;
 import org.springframework.beans.factory.annotation.Autowired;

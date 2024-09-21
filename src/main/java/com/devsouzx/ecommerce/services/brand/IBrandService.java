@@ -1,7 +1,7 @@
 package com.devsouzx.ecommerce.services.brand;
 
-import com.devsouzx.ecommerce.domain.brand.Brand;
-import com.devsouzx.ecommerce.dtos.brand.BrandRequestDTO;
+import com.devsouzx.ecommerce.model.Brand;
+import com.devsouzx.ecommerce.requests.BrandRequestDTO;
 
 import java.util.List;
 import java.util.UUID;

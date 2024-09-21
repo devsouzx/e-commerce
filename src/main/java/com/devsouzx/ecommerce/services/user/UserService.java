@@ -1,8 +1,8 @@
 package com.devsouzx.ecommerce.services.user;
 
-import com.devsouzx.ecommerce.domain.user.User;
-import com.devsouzx.ecommerce.domain.user.UserRole;
-import com.devsouzx.ecommerce.dtos.user.UserRequestDTO;
+import com.devsouzx.ecommerce.model.User;
+import com.devsouzx.ecommerce.model.UserRole;
+import com.devsouzx.ecommerce.requests.UserRequestDTO;
 import com.devsouzx.ecommerce.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;

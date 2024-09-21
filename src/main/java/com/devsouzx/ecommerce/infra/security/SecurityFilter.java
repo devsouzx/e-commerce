@@ -1,7 +1,7 @@
 package com.devsouzx.ecommerce.infra.security;
 
 import com.auth0.jwt.exceptions.JWTVerificationException;
-import com.devsouzx.ecommerce.services.user.UserService;
+import com.devsouzx.ecommerce.services.user.IUserService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -21,7 +21,7 @@ public class SecurityFilter extends OncePerRequestFilter {
     private TokenService tokenService;
 
     @Autowired
-    private UserService userService;
+    private IUserService userService;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {

@@ -1,9 +1,9 @@
 package com.devsouzx.ecommerce.controllers;
 
-import com.devsouzx.ecommerce.domain.brand.Brand;
-import com.devsouzx.ecommerce.dtos.brand.BrandRequestDTO;
-import com.devsouzx.ecommerce.dtos.brand.BrandResponseDTO;
-import com.devsouzx.ecommerce.dtos.product.ProductResponseDTO;
+import com.devsouzx.ecommerce.model.Brand;
+import com.devsouzx.ecommerce.requests.BrandRequestDTO;
+import com.devsouzx.ecommerce.responses.BrandResponseDTO;
+import com.devsouzx.ecommerce.responses.ProductResponseDTO;
 import com.devsouzx.ecommerce.services.brand.IBrandService;
 import com.devsouzx.ecommerce.services.category.ICategoryService;
 import com.devsouzx.ecommerce.services.product.IProductService;

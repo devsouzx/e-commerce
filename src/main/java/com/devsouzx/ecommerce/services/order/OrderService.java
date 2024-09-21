@@ -1,7 +1,7 @@
 package com.devsouzx.ecommerce.services.order;
 
-import com.devsouzx.ecommerce.domain.order.Order;
-import com.devsouzx.ecommerce.domain.order.OrderProduct;
+import com.devsouzx.ecommerce.model.Order;
+import com.devsouzx.ecommerce.model.OrderProduct;
 import com.devsouzx.ecommerce.repositories.OrderProductRepository;
 import com.devsouzx.ecommerce.repositories.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;

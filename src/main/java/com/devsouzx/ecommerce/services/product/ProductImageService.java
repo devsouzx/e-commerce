@@ -1,6 +1,6 @@
 package com.devsouzx.ecommerce.services.product;
 
-import com.devsouzx.ecommerce.domain.product.ProductImage;
+import com.devsouzx.ecommerce.model.ProductImage;
 import com.devsouzx.ecommerce.repositories.ProductImageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

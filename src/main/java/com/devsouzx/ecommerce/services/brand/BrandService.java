@@ -1,8 +1,8 @@
 package com.devsouzx.ecommerce.services.brand;
 
-import com.devsouzx.ecommerce.domain.brand.Brand;
-import com.devsouzx.ecommerce.domain.product.Product;
-import com.devsouzx.ecommerce.dtos.brand.BrandRequestDTO;
+import com.devsouzx.ecommerce.model.Brand;
+import com.devsouzx.ecommerce.model.Product;
+import com.devsouzx.ecommerce.requests.BrandRequestDTO;
 import com.devsouzx.ecommerce.repositories.BrandRepository;
 import com.devsouzx.ecommerce.repositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;

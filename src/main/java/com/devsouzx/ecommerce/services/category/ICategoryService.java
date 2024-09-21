@@ -1,7 +1,7 @@
 package com.devsouzx.ecommerce.services.category;
 
-import com.devsouzx.ecommerce.domain.category.Category;
-import com.devsouzx.ecommerce.dtos.category.CategoryRequestDTO;
+import com.devsouzx.ecommerce.model.Category;
+import com.devsouzx.ecommerce.requests.CategoryRequestDTO;
 
 import java.util.List;
 import java.util.UUID;

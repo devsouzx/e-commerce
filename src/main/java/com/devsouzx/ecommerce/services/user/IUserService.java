@@ -1,7 +1,7 @@
 package com.devsouzx.ecommerce.services.user;
 
-import com.devsouzx.ecommerce.domain.user.User;
-import com.devsouzx.ecommerce.dtos.user.UserRequestDTO;
+import com.devsouzx.ecommerce.model.User;
+import com.devsouzx.ecommerce.requests.UserRequestDTO;
 
 import java.util.List;
 import java.util.UUID;

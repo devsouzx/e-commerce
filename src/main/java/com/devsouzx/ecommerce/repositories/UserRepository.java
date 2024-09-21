@@ -1,6 +1,6 @@
 package com.devsouzx.ecommerce.repositories;
 
-import com.devsouzx.ecommerce.domain.user.User;
+import com.devsouzx.ecommerce.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.UUID;

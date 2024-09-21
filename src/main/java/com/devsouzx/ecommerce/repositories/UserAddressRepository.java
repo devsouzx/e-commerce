@@ -1,8 +1,8 @@
 package com.devsouzx.ecommerce.repositories;
 
-import com.devsouzx.ecommerce.domain.address.Address;
-import com.devsouzx.ecommerce.domain.address.UserAddress;
-import com.devsouzx.ecommerce.domain.user.User;
+import com.devsouzx.ecommerce.model.Address;
+import com.devsouzx.ecommerce.model.UserAddress;
+import com.devsouzx.ecommerce.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
