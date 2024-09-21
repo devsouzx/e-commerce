@@ -6,7 +6,7 @@ import com.devsouzx.ecommerce.domain.user.User;
 import com.devsouzx.ecommerce.dtos.user.UserResponseDTO;
 import com.devsouzx.ecommerce.dtos.user.TokenResponseDTO;
 import com.devsouzx.ecommerce.infra.security.TokenService;
-import com.devsouzx.ecommerce.services.UserService;
+import com.devsouzx.ecommerce.services.user.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/auth")
 public class AuthController {
     @Autowired
-    private UserService userService;
+    private IUserService userService;
 
     @Autowired
     private AuthenticationManager authenticationManager;

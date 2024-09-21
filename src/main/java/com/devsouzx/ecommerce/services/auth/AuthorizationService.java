@@ -1,4 +1,4 @@
-package com.devsouzx.ecommerce.services;
+package com.devsouzx.ecommerce.services.auth;
 
 import com.devsouzx.ecommerce.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;

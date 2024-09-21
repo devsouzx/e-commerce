@@ -1,7 +1,7 @@
 package com.devsouzx.ecommerce.infra.security;
 
 import com.auth0.jwt.exceptions.JWTVerificationException;
-import com.devsouzx.ecommerce.services.UserService;
+import com.devsouzx.ecommerce.services.user.UserService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

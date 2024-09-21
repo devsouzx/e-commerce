@@ -1,4 +1,4 @@
-package com.devsouzx.ecommerce.services;
+package com.devsouzx.ecommerce.services.category;
 
 import com.devsouzx.ecommerce.domain.category.Category;
 import com.devsouzx.ecommerce.domain.product.Product;
@@ -12,29 +12,34 @@ import java.util.List;
 import java.util.UUID;
 
 @Service
-public class CategoryService {
+public class CategoryService implements ICategoryService {
     @Autowired
     private CategoryRepository categoryRepository;
 
     @Autowired
     private ProductRepository productRepository;
 
+    @Override
     public List<Category> findAll() {
         return categoryRepository.findAll();
     }
 
+    @Override
     public Category findById(UUID id) {
         return categoryRepository.findById(id).orElseThrow(() -> new RuntimeException("Category not found"));
     }
 
+    @Override
     public void save(Category category) {
         categoryRepository.save(category);
     }
 
+    @Override
     public Category findCategoryByName(String categoryName) {
         return categoryRepository.findByName(categoryName);
     }
 
+    @Override
     public void delete(Category category) {
         if (category != null) {
             List<Product> products = productRepository.findByCategoryId(category.getId());
@@ -47,6 +52,7 @@ public class CategoryService {
         categoryRepository.delete(category);
     }
 
+    @Override
     public Category update(UUID id, CategoryRequestDTO body) {
         Category category = this.findById(id);
         category.setName(body.name());

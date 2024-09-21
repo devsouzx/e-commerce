@@ -5,10 +5,10 @@ import com.devsouzx.ecommerce.domain.product.ProductImage;
 import com.devsouzx.ecommerce.dtos.product.ImageRequestDTO;
 import com.devsouzx.ecommerce.dtos.product.ProductRequestDTO;
 import com.devsouzx.ecommerce.dtos.product.ProductResponseDTO;
-import com.devsouzx.ecommerce.services.BrandService;
-import com.devsouzx.ecommerce.services.CategoryService;
-import com.devsouzx.ecommerce.services.ProductImageService;
-import com.devsouzx.ecommerce.services.ProductService;
+import com.devsouzx.ecommerce.services.brand.IBrandService;
+import com.devsouzx.ecommerce.services.category.ICategoryService;
+import com.devsouzx.ecommerce.services.product.IProductImageService;
+import com.devsouzx.ecommerce.services.product.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,16 +21,16 @@ import java.util.UUID;
 @RequestMapping("/products")
 public class ProductController {
     @Autowired
-    private ProductService productService;
+    private IProductService productService;
 
     @Autowired
-    private ProductImageService productImageService;
+    private IProductImageService productImageService;
 
     @Autowired
-    private CategoryService categoryService;
+    private ICategoryService categoryService;
 
     @Autowired
-    private BrandService brandService;
+    private IBrandService brandService;
 
     @GetMapping
     public ResponseEntity<List<ProductResponseDTO>> getProducts() {

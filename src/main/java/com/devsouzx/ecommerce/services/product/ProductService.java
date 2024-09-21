@@ -1,4 +1,4 @@
-package com.devsouzx.ecommerce.services;
+package com.devsouzx.ecommerce.services.product;
 
 import com.devsouzx.ecommerce.domain.product.Product;
 import com.devsouzx.ecommerce.dtos.product.ProductRequestDTO;
@@ -10,34 +10,41 @@ import java.util.List;
 import java.util.UUID;
 
 @Service
-public class ProductService {
+public class ProductService implements IProductService {
     @Autowired
     private ProductRepository productRepository;
 
+    @Override
     public List<Product> findAll() {
         return productRepository.findAll();
     }
 
+    @Override
     public void save(Product product) {
         productRepository.save(product);
     }
 
+    @Override
     public List<Product> findProductsByCategoryId(UUID id) {
         return productRepository.findByCategoryId(id);
     }
 
+    @Override
     public List<Product> findProductsByBrandId(UUID id) {
         return productRepository.findByBrandId(id);
     }
 
+    @Override
     public Product findById(UUID id) {
         return productRepository.findById(id).orElseThrow(() -> new RuntimeException("Product not found!"));
     }
 
+    @Override
     public void delete(Product product) {
         productRepository.delete(product);
     }
 
+    @Override
     public Product update(UUID id, ProductRequestDTO body) {
         Product product = this.findById(id);
         this.updateDate(product, body);

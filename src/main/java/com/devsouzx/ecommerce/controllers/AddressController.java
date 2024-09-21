@@ -5,9 +5,9 @@ import com.devsouzx.ecommerce.domain.address.UserAddress;
 import com.devsouzx.ecommerce.dtos.address.AddressRequestDTO;
 import com.devsouzx.ecommerce.dtos.address.AddressResponseDTO;
 import com.devsouzx.ecommerce.domain.user.User;
-import com.devsouzx.ecommerce.services.AddressService;
-import com.devsouzx.ecommerce.services.UserAddressService;
-import com.devsouzx.ecommerce.services.UserService;
+import com.devsouzx.ecommerce.services.address.IAddressService;
+import com.devsouzx.ecommerce.services.user.IUserAddressService;
+import com.devsouzx.ecommerce.services.user.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,13 +20,13 @@ import java.util.stream.Collectors;
 @RequestMapping("/address")
 public class  AddressController {
     @Autowired
-    private AddressService addressService;
+    private IAddressService addressService;
 
     @Autowired
-    private UserService userService;
+    private IUserService userService;
 
     @Autowired
-    private UserAddressService userAddressService;
+    private IUserAddressService userAddressService;
 
     @GetMapping("/{id}")
     public ResponseEntity<AddressResponseDTO> getAddressById(@PathVariable UUID id) {

@@ -1,4 +1,4 @@
-package com.devsouzx.ecommerce.services;
+package com.devsouzx.ecommerce.services.user;
 
 import com.devsouzx.ecommerce.domain.user.User;
 import com.devsouzx.ecommerce.domain.user.UserRole;
@@ -12,31 +12,37 @@ import java.util.List;
 import java.util.UUID;
 
 @Service
-public class UserService {
+public class UserService implements IUserService {
     @Autowired
     private UserRepository userRepository;
 
+    @Override
     public User register(UserRequestDTO body) {
         User user = new User(body.name(), body.email(), new BCryptPasswordEncoder().encode(body.password()), body.phone(), body.birthDate(), body.gender(), UserRole.USER);
         return userRepository.save(user);
     }
 
+    @Override
     public List<User> findAll() {
         return userRepository.findAll();
     }
 
+    @Override
     public User findByEmail(String email) {
         return userRepository.findByEmail(email);
     }
 
+    @Override
     public void saveUser(User user) {
         userRepository.save(user);
     }
 
+    @Override
     public User findById(UUID id) {
         return userRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("User not found"));
     }
 
+    @Override
     public User update(UUID id, UserRequestDTO user) {
         User entity = this.findById(id);
         this.updateDate(entity, user);
@@ -55,6 +61,7 @@ public class UserService {
         entity.setCreatedAt(user.createdAt());
     }
 
+    @Override
     public void delete(User user) {
         userRepository.delete(user);
     }

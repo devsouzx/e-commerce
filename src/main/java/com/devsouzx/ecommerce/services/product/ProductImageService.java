@@ -1,4 +1,4 @@
-package com.devsouzx.ecommerce.services;
+package com.devsouzx.ecommerce.services.product;
 
 import com.devsouzx.ecommerce.domain.product.ProductImage;
 import com.devsouzx.ecommerce.repositories.ProductImageRepository;
@@ -6,10 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ProductImageService {
+public class ProductImageService implements IProductImageService {
     @Autowired
     private ProductImageRepository productImageRepository;
 
+    @Override
     public void save(ProductImage productImage) {
         productImageRepository.save(productImage);
     }

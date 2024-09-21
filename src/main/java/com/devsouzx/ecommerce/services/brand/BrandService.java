@@ -1,4 +1,4 @@
-package com.devsouzx.ecommerce.services;
+package com.devsouzx.ecommerce.services.brand;
 
 import com.devsouzx.ecommerce.domain.brand.Brand;
 import com.devsouzx.ecommerce.domain.product.Product;
@@ -12,25 +12,29 @@ import java.util.List;
 import java.util.UUID;
 
 @Service
-public class BrandService {
+public class BrandService implements IBrandService {
     @Autowired
     private BrandRepository brandRepository;
 
     @Autowired
     private ProductRepository productRepository;
 
+    @Override
     public List<Brand> findAll() {
         return brandRepository.findAll();
     }
 
+    @Override
     public Brand findById(UUID id) {
         return brandRepository.findById(id).orElseThrow(() -> new RuntimeException("Brand not found!"));
     }
 
+    @Override
     public void save(Brand brand) {
         brandRepository.save(brand);
     }
 
+    @Override
     public void delete(Brand brand) {
         if (brand != null) {
             List<Product> products = productRepository.findByBrandId(brand.getId());
@@ -43,6 +47,7 @@ public class BrandService {
         brandRepository.delete(brand);
     }
 
+    @Override
     public Brand update(UUID id, BrandRequestDTO body) {
         Brand brand = this.findById(id);
         brand.setName(body.name());

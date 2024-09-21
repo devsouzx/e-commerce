@@ -5,7 +5,12 @@ import com.devsouzx.ecommerce.domain.order.OrderProduct;
 import com.devsouzx.ecommerce.dtos.order.OrderProductRequestDTO;
 import com.devsouzx.ecommerce.dtos.order.OrderRequestDTO;
 import com.devsouzx.ecommerce.dtos.order.OrderResponseDTO;
-import com.devsouzx.ecommerce.services.*;
+import com.devsouzx.ecommerce.services.address.IAddressService;
+import com.devsouzx.ecommerce.services.brand.IBrandService;
+import com.devsouzx.ecommerce.services.category.ICategoryService;
+import com.devsouzx.ecommerce.services.order.IOrderService;
+import com.devsouzx.ecommerce.services.product.IProductService;
+import com.devsouzx.ecommerce.services.user.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,22 +22,22 @@ import java.util.UUID;
 @RequestMapping("/orders")
 public class OrderController {
     @Autowired
-    private ProductService productService;
+    private IProductService productService;
 
     @Autowired
-    private OrderService orderService;
+    private IOrderService orderService;
 
     @Autowired
-    private UserService userService;
+    private IUserService userService;
 
     @Autowired
-    private AddressService addressService;
+    private IAddressService addressService;
 
     @Autowired
-    private CategoryService categoryService;
+    private ICategoryService categoryService;
 
     @Autowired
-    private BrandService brandService;
+    private IBrandService brandService;
 
     @GetMapping
     public ResponseEntity<List<OrderResponseDTO>> findAllOrders() {

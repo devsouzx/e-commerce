@@ -5,8 +5,8 @@ import com.devsouzx.ecommerce.dtos.user.DeleteUserRequestDTO;
 import com.devsouzx.ecommerce.domain.user.User;
 import com.devsouzx.ecommerce.dtos.user.PasswordRequestDTO;
 import com.devsouzx.ecommerce.dtos.user.UserResponseDTO;
-import com.devsouzx.ecommerce.services.AddressService;
-import com.devsouzx.ecommerce.services.UserService;
+import com.devsouzx.ecommerce.services.address.IAddressService;
+import com.devsouzx.ecommerce.services.user.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -18,13 +18,13 @@ import java.util.UUID;
 @RequestMapping("/users")
 public class UserController {
     @Autowired
-    private UserService userService;
+    private IUserService userService;
 
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
 
     @Autowired
-    private AddressService addressService;
+    private IAddressService addressService;
 
     @GetMapping
     public ResponseEntity<List<UserResponseDTO>> getUsers() {

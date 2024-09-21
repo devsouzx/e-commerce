@@ -4,9 +4,9 @@ import com.devsouzx.ecommerce.domain.category.Category;
 import com.devsouzx.ecommerce.dtos.category.CategoryRequestDTO;
 import com.devsouzx.ecommerce.dtos.category.CategoryResponseDTO;
 import com.devsouzx.ecommerce.dtos.product.ProductResponseDTO;
-import com.devsouzx.ecommerce.services.BrandService;
-import com.devsouzx.ecommerce.services.CategoryService;
-import com.devsouzx.ecommerce.services.ProductService;
+import com.devsouzx.ecommerce.services.brand.IBrandService;
+import com.devsouzx.ecommerce.services.category.ICategoryService;
+import com.devsouzx.ecommerce.services.product.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,13 +18,13 @@ import java.util.UUID;
 @RequestMapping("/categories")
 public class CategoryController {
     @Autowired
-    private CategoryService categoryService;
+    private ICategoryService categoryService;
 
     @Autowired
-    private ProductService productService;
+    private IProductService productService;
 
     @Autowired
-    private BrandService brandService;
+    private IBrandService brandService;
 
     @GetMapping
     public ResponseEntity<List<CategoryResponseDTO>> getCategories() {
